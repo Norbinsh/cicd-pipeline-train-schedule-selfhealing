@@ -10,4 +10,13 @@ router.get('/', function(req, res, next) {
   }
 });
 
+/* Health Check Page */
+router.get('/ping', function(req, res, next) {
+    if (!res.locals.broken) {
+        res.render('index', { title: 'Pong' });
+    } else {
+        res.status(500).send('no pong');
+    }
+});
+
 module.exports = router;
